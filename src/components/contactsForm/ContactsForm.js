@@ -1,8 +1,8 @@
 import React, { useState, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Form } from './ContactsForm.styled';
-import { ButtonStyled } from '../Button/Buttonstyled';
-import { InputName, Label, InputField } from '../input/Input.styled';
+import { ButtonStyled } from '../common/Button/Buttonstyled';
+import { InputName, Label, InputField } from '../common/input/Input.styled';
 import { addItem } from '../../redux/contacts/contacts-operations';
 import toast from 'react-hot-toast';
 

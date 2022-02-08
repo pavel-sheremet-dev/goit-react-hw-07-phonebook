@@ -2,7 +2,7 @@
 import { useMemo, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem } from '../../redux/contacts/contacts-operations';
-import { ButtonStyled } from '../Button/Buttonstyled';
+import { ButtonStyled } from '../common/Button/Buttonstyled';
 import {
   ContactInfo,
   ContactName,

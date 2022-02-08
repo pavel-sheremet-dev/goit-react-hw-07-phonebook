@@ -1,6 +1,6 @@
 import React from 'react';
-import { HeaderContainer } from '../container/StyledContainer';
-import Logo from '../logo/Logo';
+import { HeaderContainer } from '../common/container/StyledContainer';
+import Logo from '../common/logo/Logo';
 import ThemeSwitcher from '../themeSwitcher/ThemeSwitcher';
 
 const Header = () => {

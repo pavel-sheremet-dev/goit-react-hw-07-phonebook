@@ -6,7 +6,7 @@ import themes from './styles/themes/index';
 
 import Header from './components/header/Header';
 import Main from './components/main/Main';
-import Notify from './components/notify/Notify';
+import Notify from './components/common/notify/Notify';
 
 const App = () => {
   const theme = useSelector(state => state.theme);

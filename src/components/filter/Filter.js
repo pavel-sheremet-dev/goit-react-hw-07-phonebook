@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { InputName, Label, InputField } from '../input/Input.styled';
+import { InputName, Label, InputField } from '../common/input/Input.styled';
 import { changeFilter } from '../../redux/contacts/contacts-slice';
 
 const Filter = () => {

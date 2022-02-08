@@ -6,8 +6,8 @@ import { getItems } from '../../redux/contacts/contacts-operations';
 import ContactsForm from '../contactsForm/ContactsForm';
 import ContactsList from '../contactsList/ContactsList';
 import Filter from '../filter/Filter';
-import EmptyContactsNotify from '../notify/EmptyContactsNotify';
-import Section from '../section/Section';
+import EmptyContactsNotify from '../common/notify/EmptyContactsNotify';
+import Section from '../common/section/Section';
 
 const Contacts = () => {
   const contacts = useSelector(state => state.contacts.data.items);
