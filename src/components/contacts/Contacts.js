@@ -10,8 +10,8 @@ import EmptyContactsNotify from '../notify/EmptyContactsNotify';
 import Section from '../section/Section';
 
 const Contacts = () => {
-  const contacts = useSelector(state => state.contacts.items);
-  const error = useSelector(state => state.contacts.error);
+  const contacts = useSelector(state => state.contacts.data.items);
+  const error = useSelector(state => state.contacts.data.error);
   const dispatch = useDispatch();
 
   useEffect(() => {

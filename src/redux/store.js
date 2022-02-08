@@ -14,8 +14,8 @@ import { myMiddleware } from './middlewares/middlewares';
 
 import storage from 'redux-persist/lib/storage';
 
-import contactsReducer from './contacts/contacts-reducer';
-import themeReducer from './theme/theme-reducer';
+import themeReducer from './theme/theme-slice';
+import contactsReducer from './contacts/contacts-slice';
 
 const persistContactsConfig = {
   key: 'local-contacts',

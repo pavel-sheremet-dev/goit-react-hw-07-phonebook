@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { InputName, Label, InputField } from '../input/Input.styled';
-import { changeFilter } from '../../redux/contacts/contacts-actions';
+import { changeFilter } from '../../redux/contacts/contacts-slice';
 
 const Filter = () => {
-  const filter = useSelector(state => state.contacts.filter);
+  const filter = useSelector(state => state.contacts.data.filter);
   const dispatch = useDispatch();
 
   const handleChange = e => dispatch(changeFilter(e.target.value));

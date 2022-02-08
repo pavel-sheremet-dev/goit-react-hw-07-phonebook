@@ -1,11 +1,10 @@
 import { useState, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleTheme } from '../../redux/theme/theme-actions';
+
+import { themeActions } from '../../redux/theme';
 
 import sprite from '../../images/sprite.svg';
 import { ThemeBtn, ThemeIcon } from './ThemeSwitcher.styled';
-
-import { addContact } from '../../services/apiServices';
 
 const ThemeSwitcher = () => {
   const [opacity, setOpacity] = useState(1);
@@ -16,12 +15,10 @@ const ThemeSwitcher = () => {
 
   const handleClick = () => {
     hideElement().then(() => {
-      dispatch(toggleTheme(theme));
+      dispatch(themeActions.toggleTheme(theme));
       setOpacity(1);
       setScale(1);
     });
-
-    addContact({ name: 'papa', number: '35154654' });
   };
 
   const hideElement = () => {

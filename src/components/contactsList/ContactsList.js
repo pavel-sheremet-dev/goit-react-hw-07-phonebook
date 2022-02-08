@@ -15,10 +15,12 @@ import {
 
 const ContactsList = () => {
   const [clickedId, setClickedId] = useState(null);
-  const contacts = useSelector(state => state.contacts.items);
+  const contacts = useSelector(state => state.contacts.data.items);
   const filter = useSelector(state => state.contacts.filter);
-  const loading = useSelector(state => state.contacts.loading);
+  const loading = useSelector(state => state.contacts.data.loading);
   const dispatch = useDispatch();
+
+  console.log('filter', filter);
 
   const filteredContacts = useMemo(() => {
     const normalizedFilter = filter.toLowerCase();

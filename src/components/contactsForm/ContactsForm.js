@@ -10,7 +10,7 @@ const ContactsForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(state => state.contacts.items);
+  const contacts = useSelector(state => state.contacts.data.items);
   const dispatch = useDispatch();
 
   const handleChange = e => {
