@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { ButtonStyled } from 'components/common/Button/Buttonstyled';
 import {
   ContactInfo,
@@ -7,13 +7,16 @@ import {
   ContactsItem,
   Contacts,
   PhoneLink,
+  BluredBackground,
 } from './ContactsList.styled';
 import { contactsHooks } from 'redux/contacts';
 
 const { useDeleteContactMutation } = contactsHooks;
 
 const ContactsList = ({ contacts, filter }) => {
-  const [deleteContact] = useDeleteContactMutation();
+  const [clickedId, setClickedId] = useState(null);
+
+  const [deleteContact, { isLoading }] = useDeleteContactMutation();
 
   const filteredContacts = useMemo(() => {
     const normalizedFilter = filter.toLowerCase();
@@ -21,6 +24,11 @@ const ContactsList = ({ contacts, filter }) => {
       name.toLowerCase().includes(normalizedFilter),
     );
   }, [contacts, filter]);
+
+  const handleClick = id => {
+    setClickedId(id);
+    deleteContact(id);
+  };
 
   return (
     <Contacts>
@@ -32,7 +40,8 @@ const ContactsList = ({ contacts, filter }) => {
               <PhoneLink href={`tel:${name}`}>{number}</PhoneLink>
             </ContactPhone>
           </ContactInfo>
-          <ButtonStyled type="button" onClick={() => deleteContact(id)}>
+          {isLoading && clickedId === id && <BluredBackground />}
+          <ButtonStyled type="button" onClick={() => handleClick(id)}>
             Remove
           </ButtonStyled>
         </ContactsItem>
