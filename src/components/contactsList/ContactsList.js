@@ -1,7 +1,8 @@
 // import PropTypes from "prop-types";
 import { useMemo, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeItem } from '../../redux/contacts/contacts-operations';
+import { contactsOperations } from '../../redux/contacts';
+import { contactsSelectors } from '../../redux/contacts';
 import { ButtonStyled } from '../common/Button/Buttonstyled';
 import {
   ContactInfo,
@@ -13,11 +14,14 @@ import {
   BluredBackground,
 } from './ContactsList.styled';
 
+const { removeItem } = contactsOperations;
+const { getContacts, getLoading, getFilter } = contactsSelectors;
+
 const ContactsList = () => {
   const [clickedId, setClickedId] = useState(null);
-  const contacts = useSelector(state => state.contacts.data.items);
-  const filter = useSelector(state => state.contacts.filter);
-  const loading = useSelector(state => state.contacts.data.loading);
+  const contacts = useSelector(state => getContacts(state));
+  const filter = useSelector(state => getFilter(state));
+  const loading = useSelector(state => getLoading(state));
   const dispatch = useDispatch();
 
   const filteredContacts = useMemo(() => {

@@ -59,6 +59,4 @@ const itemsSlice = createSlice({
 
 export const { changeFilter } = itemsSlice.actions;
 
-const contactsReducer = itemsSlice.reducer;
-
-export default contactsReducer;
+export default itemsSlice.reducer;

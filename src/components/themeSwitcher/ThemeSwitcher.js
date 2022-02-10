@@ -1,21 +1,26 @@
 import { useState, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { themeSelectors } from '../../redux/theme';
+
 import { themeActions } from '../../redux/theme';
 
 import sprite from '../../images/sprite.svg';
 import { ThemeBtn, ThemeIcon } from './ThemeSwitcher.styled';
 
+const { getTheme } = themeSelectors;
+const { toggleTheme } = themeActions;
+
 const ThemeSwitcher = () => {
   const [opacity, setOpacity] = useState(1);
   const [scale, setScale] = useState(1);
 
-  const theme = useSelector(state => state.theme);
+  const theme = useSelector(state => getTheme(state));
   const dispatch = useDispatch();
 
   const handleClick = () => {
     hideElement().then(() => {
-      dispatch(themeActions.toggleTheme(theme));
+      dispatch(toggleTheme(theme));
       setOpacity(1);
       setScale(1);
     });
