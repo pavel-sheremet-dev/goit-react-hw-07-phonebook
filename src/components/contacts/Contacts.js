@@ -1,22 +1,19 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { getItems } from '../../redux/contacts/contacts-operations';
+import { useState } from 'react';
+
+import { contactsHooks } from 'redux/contacts';
 
 // components
-import ContactsForm from '../contactsForm/ContactsForm';
-import ContactsList from '../contactsList/ContactsList';
-import Filter from '../filter/Filter';
-import EmptyContactsNotify from '../notify/EmptyContactsNotify';
-import Section from '../section/Section';
+import ContactsForm from 'components/contactsForm';
+import ContactsList from 'components/contactsList';
+import Filter from 'components/filter';
+import EmptyContactsNotify from 'components/common/notify/EmptyContactsNotify';
+import Section from 'components/common/section/Section';
+
+const { useGetContactsQuery } = contactsHooks;
 
 const Contacts = () => {
-  const contacts = useSelector(state => state.contacts.items);
-  const error = useSelector(state => state.contacts.error);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getItems());
-  }, [dispatch]);
+  const { data: contacts, isSuccess, isError } = useGetContactsQuery();
+  const [filter, setFilter] = useState('');
 
   return (
     <>
@@ -24,15 +21,14 @@ const Contacts = () => {
         <ContactsForm />
       </Section>
       <Section titleLevel="h2" title="Your Contacts">
-        {error && <div>Somesing went wrong</div>}
-        {contacts.length ? (
+        {isSuccess && (
           <>
-            <Filter />
-            <ContactsList />
+            <Filter getFilterValue={setFilter} />
+            <ContactsList contacts={contacts} filter={filter} />
           </>
-        ) : (
-          <EmptyContactsNotify />
         )}
+        {isSuccess && !contacts.length && <EmptyContactsNotify />}
+        {isError && <div>somesing went wrong</div>}
       </Section>
     </>
   );

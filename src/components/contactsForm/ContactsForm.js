@@ -1,17 +1,23 @@
 import React, { useState, memo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { Form } from './ContactsForm.styled';
-import { ButtonStyled } from '../Button/Buttonstyled';
-import { InputName, Label, InputField } from '../input/Input.styled';
-import { addItem } from '../../redux/contacts/contacts-operations';
+import { ButtonStyled } from 'components/common/Button/Buttonstyled';
+import {
+  InputName,
+  Label,
+  InputField,
+} from 'components/common/input/Input.styled';
 import toast from 'react-hot-toast';
+import { contactsHooks } from 'redux/contacts';
+import Loader from 'components/common/loader/Loader';
+
+const { useAddContactMutation, useGetContactsQuery } = contactsHooks;
 
 const ContactsForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(state => state.contacts.items);
-  const dispatch = useDispatch();
+  const { data: contacts, isFetching } = useGetContactsQuery();
+  const [addContact] = useAddContactMutation();
 
   const handleChange = e => {
     const inputName = e.target.name;
@@ -38,7 +44,7 @@ const ContactsForm = () => {
       return;
     }
 
-    dispatch(addItem({ name, number }));
+    addContact({ name, number });
 
     setName('');
     setNumber('');
@@ -78,7 +84,12 @@ const ContactsForm = () => {
           autoComplete="off"
         />
       </Label>
-      <ButtonStyled type="submit">Add contact</ButtonStyled>
+      <div className="button-wrapper">
+        <ButtonStyled type="submit" mr={20}>
+          Add contact
+        </ButtonStyled>
+        {isFetching && <Loader />}
+      </div>
     </Form>
   );
 };

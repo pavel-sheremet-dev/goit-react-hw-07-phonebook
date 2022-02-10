@@ -13,9 +13,7 @@ export const Contacts = styled.ul`
 `;
 
 export const ContactsItem = styled.li`
-  position: relative;
-  display: inline-flex;
-  padding: 5px;
+  display: flex;
   align-items: center;
   margin-bottom: 10px;
 `;
@@ -50,15 +48,4 @@ export const PhoneLink = styled.a`
   font-weight: 700;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.mainBrandColor};
-`;
-
-export const BluredBackground = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  /* background-color: rgba(200, 200, 200, 0.1); */
-  backdrop-filter: blur(2px);
 `;

@@ -1,8 +1,5 @@
-// import PropTypes from "prop-types";
-import { useMemo, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { removeItem } from '../../redux/contacts/contacts-operations';
-import { ButtonStyled } from '../Button/Buttonstyled';
+import { useMemo } from 'react';
+import { ButtonStyled } from 'components/common/Button/Buttonstyled';
 import {
   ContactInfo,
   ContactName,
@@ -10,15 +7,13 @@ import {
   ContactsItem,
   Contacts,
   PhoneLink,
-  BluredBackground,
 } from './ContactsList.styled';
+import { contactsHooks } from 'redux/contacts';
 
-const ContactsList = () => {
-  const [clickedId, setClickedId] = useState(null);
-  const contacts = useSelector(state => state.contacts.items);
-  const filter = useSelector(state => state.contacts.filter);
-  const loading = useSelector(state => state.contacts.loading);
-  const dispatch = useDispatch();
+const { useDeleteContactMutation } = contactsHooks;
+
+const ContactsList = ({ contacts, filter }) => {
+  const [deleteContact] = useDeleteContactMutation();
 
   const filteredContacts = useMemo(() => {
     const normalizedFilter = filter.toLowerCase();
@@ -26,11 +21,6 @@ const ContactsList = () => {
       name.toLowerCase().includes(normalizedFilter),
     );
   }, [contacts, filter]);
-
-  const handleClick = id => {
-    setClickedId(id);
-    dispatch(removeItem(id));
-  };
 
   return (
     <Contacts>
@@ -42,8 +32,7 @@ const ContactsList = () => {
               <PhoneLink href={`tel:${name}`}>{number}</PhoneLink>
             </ContactPhone>
           </ContactInfo>
-          {loading && clickedId === id && <BluredBackground />}
-          <ButtonStyled type="button" onClick={() => handleClick(id)}>
+          <ButtonStyled type="button" onClick={() => deleteContact(id)}>
             Remove
           </ButtonStyled>
         </ContactsItem>
