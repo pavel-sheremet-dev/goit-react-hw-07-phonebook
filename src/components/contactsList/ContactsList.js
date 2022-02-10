@@ -20,8 +20,6 @@ const ContactsList = () => {
   const loading = useSelector(state => state.contacts.data.loading);
   const dispatch = useDispatch();
 
-  console.log('filter', filter);
-
   const filteredContacts = useMemo(() => {
     const normalizedFilter = filter.toLowerCase();
     return contacts.filter(({ name }) =>
