@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { contactsSelectors } from '../../redux/contacts';
-import { contactsOperations } from '../../redux/contacts';
+import { contactsSelectors, contactsOperations } from '../../redux/contacts';
 
 // components
 import ContactsForm from '../contactsForm/ContactsForm';
@@ -15,8 +14,8 @@ const { getItems } = contactsOperations;
 const { getContacts, getError } = contactsSelectors;
 
 const Contacts = () => {
-  const contacts = useSelector(state => getContacts(state));
-  const error = useSelector(state => getError(state));
+  const contacts = useSelector(getContacts);
+  const error = useSelector(getError);
   const dispatch = useDispatch();
 
   useEffect(() => {

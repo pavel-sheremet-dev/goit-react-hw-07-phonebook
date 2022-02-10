@@ -12,7 +12,7 @@ import Notify from './components/common/notify/Notify';
 const { getTheme } = themeSelectors;
 
 const App = () => {
-  const theme = useSelector(state => getTheme(state));
+  const theme = useSelector(getTheme);
 
   return (
     <>

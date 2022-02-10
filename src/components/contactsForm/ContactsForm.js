@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Form } from './ContactsForm.styled';
 import { ButtonStyled } from '../common/Button/Buttonstyled';
 import { InputName, Label, InputField } from '../common/input/Input.styled';
-import { contactsOperations } from '../../redux/contacts';
-import { contactsSelectors } from '../../redux/contacts';
+import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 
 import toast from 'react-hot-toast';
 
@@ -15,7 +14,7 @@ const ContactsForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(state => getContacts(state));
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
   const handleChange = e => {
