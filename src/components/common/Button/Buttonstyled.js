@@ -6,4 +6,14 @@ export const ButtonStyled = styled.button`
   cursor: pointer;
   background-color: ${({ theme }) => theme.colors.mainBrandColor};
   color: ${({ theme }) => theme.colors.btnFontColor};
+  transition: background-color 200ms linear;
+
+  &:hover,
+  &:focus {
+    background-color: ${({ theme }) => theme.colors.btnHoverBackground};
+  }
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.colors.disabled};
+  }
 `;

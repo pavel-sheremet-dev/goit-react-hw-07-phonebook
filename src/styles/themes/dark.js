@@ -11,6 +11,8 @@ export const dark = {
     accentinputColor: '#b3f0ce',
     inputBorder: `1px solid #332222`,
     btnFontColor: '#ffffff',
+    btnHoverBackground: '#135d34',
     scrollBackground: 'rgba(0, 0, 0, 0.3)',
+    disabled: 'grey',
   },
 };

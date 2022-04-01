@@ -49,4 +49,9 @@ button {
 .list {
   list-style: none;
 }
+
+.paragraph {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
 `;

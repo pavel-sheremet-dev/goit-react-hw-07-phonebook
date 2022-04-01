@@ -1,11 +1,14 @@
-import { FirstWord, LogoStyled } from './Logo.styled';
+import { FirstWord, LogoWrapper } from './Logo.styled';
+import { NavLink } from 'react-router-dom';
 
 const Logo = () => {
   return (
-    <LogoStyled href="#">
-      <FirstWord>Phone</FirstWord>
-      <span>book</span>
-    </LogoStyled>
+    <LogoWrapper>
+      <NavLink className="nav-link" to="/">
+        <FirstWord>Phone</FirstWord>
+        <span>book</span>
+      </NavLink>
+    </LogoWrapper>
   );
 };
 

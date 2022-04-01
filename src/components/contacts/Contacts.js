@@ -18,6 +18,8 @@ const Contacts = () => {
   const error = useSelector(getError);
   const dispatch = useDispatch();
 
+  console.log('error', error);
+
   useEffect(() => {
     dispatch(getItems());
   }, [dispatch]);
@@ -29,7 +31,7 @@ const Contacts = () => {
       </Section>
       <Section titleLevel="h2" title="Your Contacts">
         {error && <div>Somesing went wrong</div>}
-        {contacts.length ? (
+        {contacts?.length ? (
           <>
             <Filter />
             <ContactsList />

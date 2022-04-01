@@ -10,22 +10,40 @@ import {
 
 export const getItems = createAsyncThunk(
   'items/getItemsStatus',
-  async () => await getContacts(),
+  async (_, thunkAPI) => {
+    try {
+      const data = await getContacts();
+      return Object.keys(data || {}).map(id => ({ id, ...data[id] }));
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
 );
 
 // addItem
 
 export const addItem = createAsyncThunk(
   'items/addItemsStatus',
-  async contact => await addContact(contact),
+  async (contact, thunkAPI) => {
+    try {
+      const data = await addContact(contact);
+      return { id: data.name, ...contact };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
 );
 
 // removeItem
 
 export const removeItem = createAsyncThunk(
   'items/removeItemsStatus',
-  async id => {
-    const removedItem = await deleteContact(id);
-    return removedItem.id;
+  async (id, thunkAPI) => {
+    try {
+      await deleteContact(id);
+      return id;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   },
 );

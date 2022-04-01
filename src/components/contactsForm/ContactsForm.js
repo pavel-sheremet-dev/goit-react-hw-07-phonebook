@@ -33,7 +33,7 @@ const ContactsForm = () => {
 
     const normalizeName = textNormalize(name);
 
-    const isInContacts = contacts.some(
+    const isInContacts = contacts?.some(
       item => item.name.toLowerCase() === normalizeName,
     );
 

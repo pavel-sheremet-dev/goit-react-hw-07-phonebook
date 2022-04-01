@@ -11,6 +11,8 @@ export const light = {
     accentinputColor: '#b3f0ce',
     inputBorder: '1px solid #000000',
     btnFontColor: '#ffffff',
+    btnHoverBackground: '#135d34',
     scrollBackground: 'rgba(0, 0, 0, 0.3)',
+    disabled: 'grey',
   },
 };

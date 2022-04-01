@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LogoStyled = styled.a`
+export const LogoWrapper = styled.div`
   padding: 20px 0;
   border-radius: 10px;
   text-decoration: none;
@@ -8,6 +8,11 @@ export const LogoStyled = styled.a`
   font-weight: 700;
   line-height: 1;
   color: ${({ theme }) => theme.colors.fontColor};
+
+  & .nav-link {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 export const FirstWord = styled.span`
