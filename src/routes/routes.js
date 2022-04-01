@@ -14,13 +14,13 @@ export const navRoutes = {
   signUp: {
     id: 1,
     title: 'Sign up',
-    path: 'signup',
+    path: 'sign-up',
     absolutePath: '/signup',
   },
   signIn: {
     id: 2,
     title: 'Sign in',
-    path: 'signin',
+    path: 'sign-in',
     absolutePath: '/signin',
   },
 };

@@ -1,35 +1,40 @@
-import UserMenu from 'components/userMenu/UserMenu';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { authSelectors } from 'redux/auth';
+import UserMenu from 'components/userMenu/UserMenu';
 import { NavigationStyled } from './Navigation.styled';
 
 const Navigation = ({ navRoutes, privateRoutes }) => {
+  const isLogIn = useSelector(authSelectors.getIsLoggedIn);
+
   return (
     <NavigationStyled>
       <ul className="nav-list">
-        {Object.keys(navRoutes).map(key => {
-          const { id, title, path } = navRoutes[key];
-          return (
-            <li key={id} className="nav-item">
-              <NavLink className="nav-link" to={path}>
-                {title}
-              </NavLink>
-            </li>
-          );
-        })}
-        {Object.keys(privateRoutes).map(key => {
-          const { id, title, path } = privateRoutes[key];
-          return (
-            <li key={id} className="nav-item">
-              <NavLink className="nav-link" to={path}>
-                {title}
-              </NavLink>
-            </li>
-          );
-        })}
+        {!isLogIn &&
+          Object.keys(navRoutes).map(key => {
+            const { id, title, path } = navRoutes[key];
+            return (
+              <li key={id} className="nav-item">
+                <NavLink className="nav-link" to={path}>
+                  {title}
+                </NavLink>
+              </li>
+            );
+          })}
+        {isLogIn &&
+          Object.keys(privateRoutes).map(key => {
+            const { id, title, path } = privateRoutes[key];
+            return (
+              <li key={id} className="nav-item">
+                <NavLink className="nav-link" to={path}>
+                  {title}
+                </NavLink>
+              </li>
+            );
+          })}
       </ul>
-
-      <UserMenu />
+      {isLogIn && <UserMenu />}
     </NavigationStyled>
   );
 };

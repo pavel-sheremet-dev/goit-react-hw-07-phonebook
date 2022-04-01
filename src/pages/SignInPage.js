@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { authSelectors, authOperations } from 'redux/auth';
+import toast from 'react-hot-toast';
 import { ButtonStyled } from 'components/common/Button/Buttonstyled';
 import Container from 'components/common/container/Container';
 import {
@@ -12,10 +15,20 @@ const SignInPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const dispatch = useDispatch();
+  const error = useSelector(authSelectors.getError);
+  const loading = useSelector(authSelectors.getLoading);
+
+  useEffect(() => {
+    if (!error) return;
+    toast(error);
+  }, [error]);
+
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('submit');
-    reset();
+
+    const credentials = { email, password };
+    dispatch(authOperations.signIn(credentials));
   };
 
   const reset = () => {
@@ -23,7 +36,7 @@ const SignInPage = () => {
     setPassword('');
   };
 
-  const isDisabled = !email || !password;
+  const isDisabled = !email || !password || loading;
 
   return (
     <Container>

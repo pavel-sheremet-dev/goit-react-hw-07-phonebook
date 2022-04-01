@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const NavigationStyled = styled.nav`
+  display: flex;
+  align-items: baseline;
+
   & .nav-list {
     display: flex;
   }

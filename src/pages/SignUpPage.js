@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { authOperations, authSelectors } from 'redux/auth';
+import toast from 'react-hot-toast';
 import {
   InputField,
   InputName,
@@ -9,23 +12,32 @@ import { ButtonStyled } from 'components/common/Button/Buttonstyled';
 import Container from 'components/common/container/Container';
 
 const SignUpPage = () => {
-  const [name, setName] = useState('');
+  const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const error = useSelector(authSelectors.getError);
+  const loading = useSelector(authSelectors.getLoading);
+
+  useEffect(() => {
+    if (!error) return;
+    toast(error);
+  }, [error]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('submit');
-    reset();
+
+    const credentials = { displayName, email, password };
+    dispatch(authOperations.signUp(credentials));
   };
 
   const reset = () => {
-    setName('');
+    setDisplayName('');
     setEmail('');
     setPassword('');
   };
 
-  const isDisabled = !email || !password;
+  const isDisabled = !displayName || !email || !password || loading;
 
   return (
     <Container>
@@ -38,8 +50,8 @@ const SignUpPage = () => {
             // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
-            onChange={e => setName(e.target.value)}
-            value={name}
+            onChange={e => setDisplayName(e.target.value)}
+            value={displayName}
             placeholder="Enter your name"
             autoComplete="off"
           />
@@ -74,6 +86,10 @@ const SignUpPage = () => {
           Sign Up
         </ButtonStyled>
       </Form>
+      <div>mail@mail.com</div>
+      <div>email@mail.com</div>
+      <div>email-2@mail.com</div>
+      <div>email-3@mail.com</div>
     </Container>
   );
 };

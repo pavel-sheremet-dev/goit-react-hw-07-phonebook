@@ -19,7 +19,7 @@ export const StyledContainer = styled.div`
 
 export const HeaderContainer = styled(StyledContainer)`
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   padding: 0 15px;
 `;

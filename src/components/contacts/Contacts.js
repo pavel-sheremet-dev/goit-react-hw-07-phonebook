@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { authSelectors } from 'redux/auth';
 import { useEffect } from 'react';
 import { contactsSelectors, contactsOperations } from '../../redux/contacts';
 
@@ -16,6 +17,8 @@ const { getContacts, getError } = contactsSelectors;
 const Contacts = () => {
   const contacts = useSelector(getContacts);
   const error = useSelector(getError);
+  const isLoadingUser = useSelector(authSelectors.getLoadingUser);
+
   const dispatch = useDispatch();
 
   console.log('error', error);
@@ -23,6 +26,10 @@ const Contacts = () => {
   useEffect(() => {
     dispatch(getItems());
   }, [dispatch]);
+
+  if (isLoadingUser) {
+    return <div>Загрузка</div>;
+  }
 
   return (
     <>

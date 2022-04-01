@@ -14,7 +14,7 @@ import { myMiddleware } from './middlewares/middlewares';
 
 import storage from 'redux-persist/lib/storage';
 
-import authReduser from './auth/authSlice';
+import authReduser from './auth/auth-slice';
 import themeReducer from './theme/theme-slice';
 import contactsReducer from './contacts/contacts-slice';
 
