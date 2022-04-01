@@ -14,8 +14,15 @@ import { myMiddleware } from './middlewares/middlewares';
 
 import storage from 'redux-persist/lib/storage';
 
+import authReduser from './auth/authSlice';
 import themeReducer from './theme/theme-slice';
 import contactsReducer from './contacts/contacts-slice';
+
+const persistAuthConfig = {
+  key: 'local-token',
+  storage,
+  whitelist: ['token'],
+};
 
 const persistContactsConfig = {
   key: 'local-contacts',
@@ -31,6 +38,7 @@ const persistRootConfig = {
 };
 
 const rootReducer = combineReducers({
+  auth: persistReducer(persistAuthConfig, authReduser),
   contacts: persistReducer(persistContactsConfig, contactsReducer),
   theme: themeReducer,
 });
