@@ -15,14 +15,25 @@ const HomePage = () => {
         <p>
           Hello{'\u00A0'}
           {name ? (
-            `${name}. Nice to meet You. You are logged in, so go to contacts page and manage your personal contacts`
+            <>
+              <span>{`${name}. Nice to meet You. You are logged in, so go to`}</span>
+              <NavLink className="in-text-link" to={'/contacts'}>
+                {'\u00A0'}CONTACTS{'\u00A0'}
+              </NavLink>
+              <span>and manage your personal contacts.</span>
+            </>
           ) : (
             <>
               <span>my friend. Nice to meet You on our service.</span>
               <NavLink className="in-text-link" to={'/sign-up'}>
-                {'\u00A0'}Sing Up{'\u00A0'}
+                {'\u00A0'}SIGN UP{'\u00A0'}
               </NavLink>
-              <span>and enjoy with us</span>
+              <span>or</span>
+              <NavLink className="in-text-link" to={'/sign-in'}>
+                {'\u00A0'}SIGN IN{'\u00A0'}
+              </NavLink>
+
+              <span>and manage your personal contacts and enjoy with us.</span>
             </>
           )}
         </p>
