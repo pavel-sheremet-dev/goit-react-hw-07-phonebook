@@ -82,10 +82,6 @@ const SignUpPage = () => {
           Sign Up
         </ButtonStyled>
       </Form>
-      <div>mail@mail.com</div>
-      <div>email@mail.com</div>
-      <div>email-2@mail.com</div>
-      <div>email-3@mail.com</div>
     </Section>
   );
 };
