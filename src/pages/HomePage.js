@@ -9,8 +9,6 @@ const HomePage = () => {
   // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const name = useSelector(authSelectors.getUserName);
 
-  console.log('name', name);
-
   return (
     <Section titleLevel="h1" title="PhoneBook service">
       <Paper>
