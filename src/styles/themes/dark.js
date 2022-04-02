@@ -10,9 +10,10 @@ export const dark = {
     inputColor: '#e7e7e7',
     accentinputColor: '#b3f0ce',
     inputBorder: `1px solid #332222`,
-    btnFontColor: '#ffffff',
+    btnFontColor: '#dddddd',
     btnHoverBackground: '#135d34',
     scrollBackground: 'rgba(0, 0, 0, 0.3)',
     disabled: 'grey',
+    logoColor: '#a4a4a4',
   },
 };

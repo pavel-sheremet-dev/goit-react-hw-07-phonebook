@@ -46,6 +46,20 @@ button {
   color: inherit;
 }
 
+.in-text-link {
+  text-decoration: none;
+  display: inline-block;
+  color: ${({ theme }) => theme.colors.mainBrandColor};
+  font-weight: 500;
+
+  transition: color 200ms linear;
+
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => theme.colors.btnHoverBackground};
+  }
+}
+
 .list {
   list-style: none;
 }

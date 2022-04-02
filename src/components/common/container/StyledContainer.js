@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
   /* outline: 1px solid yellow; */
-
   width: 100vw;
   padding: 0 15px;
+
   @media screen and (min-width: 480px) {
     width: 480px;
     margin: 0 auto;
@@ -18,8 +18,5 @@ export const StyledContainer = styled.div`
 `;
 
 export const HeaderContainer = styled(StyledContainer)`
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
   padding: 0 15px;
 `;

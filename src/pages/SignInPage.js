@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors, authOperations } from 'redux/auth';
 import toast from 'react-hot-toast';
 import { ButtonStyled } from 'components/common/Button/Buttonstyled';
-import Container from 'components/common/container/Container';
 import {
   InputField,
   InputName,
   Label,
 } from 'components/common/input/Input.styled';
 import { Form } from 'components/contactsForm/ContactsForm.styled';
+import Section from 'components/common/section/Section';
 
 const SignInPage = () => {
   const [email, setEmail] = useState('');
@@ -31,15 +31,10 @@ const SignInPage = () => {
     dispatch(authOperations.signIn(credentials));
   };
 
-  const reset = () => {
-    setEmail('');
-    setPassword('');
-  };
-
   const isDisabled = !email || !password || loading;
 
   return (
-    <Container>
+    <Section titleLevel="h2" title="Sign in page" isHidden>
       <Form onSubmit={handleSubmit}>
         <Label>
           <InputName>Email:</InputName>
@@ -57,7 +52,7 @@ const SignInPage = () => {
         <Label>
           <InputName>Password:</InputName>
           <InputField
-            type="text"
+            type="password"
             name="password"
             required
             onChange={e => setPassword(e.target.value)}
@@ -70,7 +65,7 @@ const SignInPage = () => {
           Sign In
         </ButtonStyled>
       </Form>
-    </Container>
+    </Section>
   );
 };
 

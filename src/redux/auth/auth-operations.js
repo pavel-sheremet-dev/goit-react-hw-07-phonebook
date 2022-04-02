@@ -14,14 +14,14 @@ const GET_USER_URL = BASE_URL + ':lookup?key=' + API_KEY;
 const GET_REFRESH_TOKEN_URL =
   'https://securetoken.googleapis.com/v1/token?key=' + API_KEY;
 
-const token = {
-  set: token => {
-    axios.defaults.headers.common.Autorization = `Bearer ${token}`;
-  },
-  unset: () => {
-    axios.defaults.headers.common.Autorization = '';
-  },
-};
+// const token = {
+//   set: token => {
+//     axios.defaults.headers.common.Autorization = `Bearer ${token}`;
+//   },
+//   unset: () => {
+//     axios.defaults.headers.common.Autorization = '';
+//   },
+// };
 
 const signUp = createAsyncThunk(
   'auth/signUp',

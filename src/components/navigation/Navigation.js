@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth';
-import UserMenu from 'components/userMenu/UserMenu';
 import { NavigationStyled } from './Navigation.styled';
+import UserMenu from 'components/userMenu/UserMenu';
 
 const Navigation = ({ navRoutes, privateRoutes }) => {
   const isLogIn = useSelector(authSelectors.getIsLoggedIn);

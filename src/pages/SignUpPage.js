@@ -9,7 +9,7 @@ import {
 } from 'components/common/input/Input.styled';
 import { Form } from 'components/contactsForm/ContactsForm.styled';
 import { ButtonStyled } from 'components/common/Button/Buttonstyled';
-import Container from 'components/common/container/Container';
+import Section from 'components/common/section/Section';
 
 const SignUpPage = () => {
   const [displayName, setDisplayName] = useState('');
@@ -31,16 +31,10 @@ const SignUpPage = () => {
     dispatch(authOperations.signUp(credentials));
   };
 
-  const reset = () => {
-    setDisplayName('');
-    setEmail('');
-    setPassword('');
-  };
-
   const isDisabled = !displayName || !email || !password || loading;
 
   return (
-    <Container>
+    <Section titleLevel="h2" title="Sign up page" isHidden>
       <Form onSubmit={handleSubmit}>
         <Label>
           <InputName>Name:</InputName>
@@ -49,6 +43,8 @@ const SignUpPage = () => {
             name="name"
             // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            pattern="[A-Za-zА-Яа-яґҐЁёІіЇїЄє'’ʼ\s-]{2,20}"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
             onChange={e => setDisplayName(e.target.value)}
             value={displayName}
@@ -73,7 +69,7 @@ const SignUpPage = () => {
         <Label>
           <InputName>Password:</InputName>
           <InputField
-            type="text"
+            type="password"
             name="password"
             required
             onChange={e => setPassword(e.target.value)}
@@ -90,7 +86,7 @@ const SignUpPage = () => {
       <div>email@mail.com</div>
       <div>email-2@mail.com</div>
       <div>email-3@mail.com</div>
-    </Container>
+    </Section>
   );
 };
 

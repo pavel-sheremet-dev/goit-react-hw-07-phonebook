@@ -1,21 +1,23 @@
-import { ButtonStyled } from 'components/common/Button/Buttonstyled';
+import { LogOutBtn } from 'components/common/Button/Buttonstyled';
 import { useSelector, useDispatch } from 'react-redux';
 import { authSelectors, signOut } from 'redux/auth';
-import { UserMenuWrapper } from './UserMenu.tyled';
+import { UserMenuWrapper } from './UserMenu.styled';
+import { MdOutlineLogout } from 'react-icons/md';
 
 const UserMenu = () => {
   const userName = useSelector(authSelectors.getUserName);
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    console.log('click');
     dispatch(signOut());
   };
 
   return (
     <UserMenuWrapper>
       <p className="name">{userName}</p>
-      <ButtonStyled onClick={handleClick}>Log Out</ButtonStyled>
+      <LogOutBtn onClick={handleClick}>
+        <MdOutlineLogout size={20} className="icon" />
+      </LogOutBtn>
     </UserMenuWrapper>
   );
 };

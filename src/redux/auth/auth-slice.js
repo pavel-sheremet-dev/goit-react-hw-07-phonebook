@@ -78,6 +78,22 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = payload;
         state.isLogIn = false;
+      })
+      // RefreshToken
+      .addCase(refreshToken.pending, state => {
+        state.loadingUser = true;
+        state.error = null;
+      })
+      .addCase(refreshToken.fulfilled, (state, { payload }) => {
+        state.loadingUser = false;
+        state.token = payload.id_token;
+        state.refreshToken = payload.refresh_token;
+      })
+      .addCase(refreshToken.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+        state.token = null;
+        state.refreshToken = null;
       });
   },
 });

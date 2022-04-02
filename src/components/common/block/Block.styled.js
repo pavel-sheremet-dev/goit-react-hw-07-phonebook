@@ -1,14 +1,17 @@
 import styled from 'styled-components';
 
-export const StyledSection = styled.section`
+export const StyledBlock = styled.div`
   padding-top: 10px;
   padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin: 0 auto;
 `;
 
-export const Title = styled.h1`
-  margin-bottom: 20px;
+export const SubTitle = styled.p`
   font-size: 30px;
+  margin-bottom: 20px;
+  font-weight: 500;
 
   ${({ isHidden }) =>
     isHidden &&

@@ -14,5 +14,6 @@ export const light = {
     btnHoverBackground: '#135d34',
     scrollBackground: 'rgba(0, 0, 0, 0.3)',
     disabled: 'grey',
+    logoColor: '#777777',
   },
 };

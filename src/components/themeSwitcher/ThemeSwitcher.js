@@ -20,7 +20,7 @@ const ThemeSwitcher = () => {
     hideElement().then(() => {
       dispatch(toggleTheme(theme));
       setOpacity(1);
-      setScale(1);
+      setScale(1.2);
     });
   };
 

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const Contacts = styled.ul`
+  display: flex;
+  flex-direction: column;
   @media screen and (min-width: 480px) {
     &::-webkit-scrollbar {
       width: 5px;

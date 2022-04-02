@@ -17,3 +17,13 @@ export const ButtonStyled = styled.button`
     background-color: ${({ theme }) => theme.colors.disabled};
   }
 `;
+
+export const LogOutBtn = styled(ButtonStyled)`
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

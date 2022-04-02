@@ -10,7 +10,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { myMiddleware } from './middlewares/middlewares';
+// import { myMiddleware } from './middlewares/middlewares';
 
 import storage from 'redux-persist/lib/storage';
 
@@ -58,7 +58,7 @@ const store = configureStore({
       },
     }),
     logger,
-    myMiddleware,
+    // myMiddleware,
   ],
   devTools: process.env.NODE_ENV !== 'production',
 });

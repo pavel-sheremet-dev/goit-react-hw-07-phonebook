@@ -12,7 +12,7 @@ export const getItems = createAsyncThunk(
   'items/getItemsStatus',
   async (_, thunkAPI) => {
     const localId = thunkAPI.getState().auth.localId;
-    console.log('localId', localId);
+
     try {
       const data = await getContacts(localId);
       return Object.keys(data || {}).map(id => ({ id, ...data[id] }));

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const ThemeBtn = styled.button`
-  padding: 5px;
+  height: 34px;
+  width: 34px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 export const NavigationStyled = styled.nav`
   display: flex;
-  align-items: baseline;
+  justify-content: space-between;
+  align-items: canter;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.fontColor};
 
   & .nav-list {
     display: flex;
@@ -13,11 +15,11 @@ export const NavigationStyled = styled.nav`
   }
 
   & .nav-link {
-    padding: 20px 0;
+    padding: 10px 0;
     text-decoration: none;
     color: ${({ theme }) => theme.colors.fontColor};
     font-weight: 700;
-    font-size: 20px;
+    font-size: 16px;
     transition: color 250ms linear;
 
     &:hover,
